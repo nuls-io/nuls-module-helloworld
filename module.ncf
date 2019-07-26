@@ -10,5 +10,6 @@ VERSION=1.0.0
 Managed=1
 
 [nuls-module-helloworld]
-address=tNULSeBaMkrt4z9FYEkkR9D6choPVvQr94oYZp
+addressPriKey=b54db432bba7e13a6c4a28f65b925b18e63bcb79143f7b894fa735d5d3d09db5
 password=nuls123456
+chainId=2

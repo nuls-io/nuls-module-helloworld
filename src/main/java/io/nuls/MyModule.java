@@ -10,6 +10,7 @@ import io.nuls.core.rpc.modulebootstrap.Module;
 import io.nuls.core.rpc.modulebootstrap.RpcModuleState;
 import io.nuls.rpctools.AccountTools;
 import io.nuls.rpctools.TransactionTools;
+import io.nuls.rpctools.vo.Account;
 
 /**
  * @Author: zhoulijun
@@ -22,11 +23,14 @@ public class MyModule {
     @Autowired
     AccountTools accountTools;
 
-    @Value("address")
-    String address;
+    @Value("addressPriKey")
+    String priKey;
 
     @Value("password")
     String password;
+
+    @Value("chainId")
+    int chainId;
 
 
     /**
@@ -36,16 +40,16 @@ public class MyModule {
      * @return
      */
     public RpcModuleState startModule(String moduleName){
-        //validation account
-        try {
-            if(accountTools.accountValid(2,address,password)){
-                Log.info("account validation success ");
-            }else{
-                Log.info("account valid fail ");
-            }
-        } catch (NulsException e) {
-            e.printStackTrace();
-        }
+        // import account by private key
+        String address = accountTools.importAddress(chainId,priKey,password);
+        // get account info
+        Account account = accountTools.getAccountByAddress(chainId,address);
+        Log.info("=".repeat(50) + " account info " + "=".repeat(50));
+        Log.info("account address : {}",account.getAddress());
+        Log.info("account pubKey hex : {}",account.getPubkeyHex());
+        Log.info("account alias : {}",account.getAlias());
+        Log.info("account encrypted prikey hex : {}",account.getEncryptedPrikeyHex());
+        Log.info("=".repeat(100 + " account info ".length()));
         return RpcModuleState.Running;
     }
 

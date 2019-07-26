@@ -1,5 +1,8 @@
-# NULS2.0 java模块开发模板
-nuls-module-java-template配合NULS-ChainBox可以帮助你快速构建基于java实现的区块链业务模块。模板中引用了io.nuls.v2下nuls-core-rpc、nuls-base两个核心程序包，前者实现了与模块的基础通信协议，后者包含了区块的基础数据结构及工具类。
+# NULS2.0 java-module-hello wlord
+基于nuls-module-java-template模板开发的一个非常简单的模块.
+
+这示例将演示从module.ncf获取账户私钥和需要设置的密码，当钱包启动成功后，调用account模块的接口将账户通过私钥导入到钱包中。然后通过账户地址查询出账户的信息，并打印到日志中。
+
 ## 模板文件结构
 
 ```

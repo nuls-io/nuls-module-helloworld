@@ -75,4 +75,21 @@ public class AccountTools implements CallRpc {
         return callRpc(ModuleE.AC.abbr, "ac_getPriKeyByAddress", callParams, (Function<Map<String, Object>, T>) res -> (T) res.get(key));
     }
 
+    /**
+     * 导入账户
+     * @param chainId
+     * @param priKey
+     * @param password
+     * @return
+     */
+    public String importAddress(int chainId,String priKey,String password){
+        Map<String, Object> callParams = new HashMap<>(4);
+        callParams.put(Constants.CHAIN_ID, chainId);
+        callParams.put("priKey", priKey);
+        callParams.put("password", password);
+        callParams.put("overwrite",true);
+        callParams.put("chainId",chainId);
+        return callRpc(ModuleE.AC.abbr, "ac_importAccountByPriKey", callParams, (Function<Map<String, Object>, String>) res -> (String) res.get("address"));
+    }
+
 }
