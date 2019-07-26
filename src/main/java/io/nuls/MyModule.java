@@ -26,7 +26,7 @@ public class MyModule {
     @Value("addressPriKey")
     String priKey;
 
-    @Value("password")
+    @Value("accountPassword")
     String password;
 
     @Value("chainId")
