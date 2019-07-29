@@ -54,5 +54,6 @@ $RECYCLE.BIN/
 outer
 build/tmp
 target
+.base_modules
 *.iml
 logs
