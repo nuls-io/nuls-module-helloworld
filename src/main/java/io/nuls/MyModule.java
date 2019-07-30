@@ -40,6 +40,7 @@ public class MyModule {
      * @return
      */
     public RpcModuleState startModule(String moduleName){
+        Log.info("Hello world!");
         // import account by private key
         String address = accountTools.importAddress(chainId,priKey,password);
         // get account info
